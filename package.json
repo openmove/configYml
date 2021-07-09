@@ -1,5 +1,5 @@
 {
-  "name": "configyml",
+  "name": "@stefcud/configyml",
   "version": "0.0.1",
   "description": "Simple Yaml Config for NodeJs",
   "main": "index.js",

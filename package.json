@@ -1,7 +1,7 @@
 {
-  "name": "config-yml",
-  "version": "0.10.3",
-  "description": "Simple Yaml Config for Node.js",
+  "name": "configyml",
+  "version": "0.0.1",
+  "description": "Simple Yaml Config for NodeJs",
   "main": "index.js",
   "scripts": {
     "test": "standard | snazzy && mocha",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nordstrom/config.git"
+    "url": "git+https://github.com/stefanocudini/configyml.git"
   },
   "keywords": [
     "Config",
@@ -23,12 +23,12 @@
     "Stack",
     "Deploy"
   ],
-  "author": "Andy Day",
+  "author": "Stefano Cudini stefano.cudini@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Nordstrom/config/issues"
+    "url": "https://github.com/stefanocudini/configyml/issues"
   },
-  "homepage": "https://github.com/Nordstrom/config#readme",
+  "homepage": "https://github.com/stefanocudini/configyml#readme",
   "standard": {
     "globals": [
       "describe",

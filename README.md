@@ -1,6 +1,8 @@
 # config-yml - Simple Yaml Config for Node.js
 
-
+```
+$ npm install @stefcud/configyml --save
+```
 
 THIS IS A FORK OF THE ORIGINAL ABANDONED REPOSITORY
 

@@ -8,7 +8,7 @@ describe('Config env from env var', function () {
 
   before(function () {
     env = 'envvar'
-    process.env.ENVIRONMENT_ID = env
+    process.env.NODE_ENV = env
     config = _load('env')
   })
 
@@ -28,6 +28,6 @@ describe('Config env from env var', function () {
   })
 
   after(function () {
-    delete process.env.ENVIRONMENT_ID
+    delete process.env.NODE_ENV
   })
 })

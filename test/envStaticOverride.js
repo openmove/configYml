@@ -8,7 +8,7 @@ describe('Config env with static override', function () {
 
   before(function () {
     env = 'test'
-    process.env.ENVIRONMENT_ID = env
+    process.env.NODE_ENV = env
     config = _load('env')
   })
 
@@ -26,6 +26,6 @@ describe('Config env with static override', function () {
   })
 
   after(function () {
-    delete process.env.ENVIRONMENT_ID
+    delete process.env.NODE_ENV
   })
 })

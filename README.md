@@ -105,7 +105,7 @@ found in the following order wins.
 
 1. [--env command line argument](#Environment-ID:---env-Argument)
 2. [--${static-environment} command line argument](#Environment-ID:---${static-environment}-Argument)
-3. [ENVIRONMENT_ID process environment setting](#Environment-ID:-ENVIRONMENT_ID)
+3. [NODE_ENV process environment setting](#Environment-ID:-NODE_ENV)
 4. [git branch name with regex filtering](#Environment-ID:-git-branch)
 
 ### Static Environments
@@ -175,11 +175,11 @@ For Static Environments set the Environment ID using the static environment id a
 gulp deploy --prod
 ```
 
-### Environment ID: ENVIRONMENT_ID
-Set the Environment ID using ENVIRONMENT_ID process environment variable.
+### Environment ID: NODE_ENV
+Set the Environment ID using NODE_ENV process environment variable.
 
 ```
-export ENVIRONMENT_ID=feature-xyz
+export NODE_ENV=feature-xyz
 ```
 
 ### Environment ID: git branch

@@ -17,6 +17,17 @@ let environmentTypes
 let environments
 let config
 
+/*function addHttp(url) {
+  //TODO const port ENV.API_PORT
+    if (url.indexOf("http://") == 0 || url.indexOf("https://") == 0) {
+        return url;
+    }
+    else {
+      let prot = 'http'+(port===443?'s':'');
+    return prot+'://' + url;
+    }
+}*/
+
 function load (env) {
   config = loadConfig()
   environments = config.environments || {}
@@ -167,8 +178,8 @@ function swapVariables (configFile) {
       ENVID: ENVID,
       timestamp: timestamp
     })
-
-  file = readAndSwap(file)
+  const enved = transform(process.env, file).result;
+  file = readAndSwap(enved)
   return file
 }
 module.exports = load()

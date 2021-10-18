@@ -157,6 +157,18 @@ function requireSettings (settings) {
   }
 }
 
+function stripComments(ymltext) {
+
+	const lines = ymltext.split(/\r?\n/).map(line => {
+		const trim = line.trim();
+		return trim[0]!=='#' ? line : '';
+	}).filter(line => {
+		return line;
+	});
+
+	return lines.join('\n')+'\n';
+}
+
 function swapVariables (configFile) {
   function readAndSwap (obj) {
     let altered = false

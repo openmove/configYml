@@ -9,9 +9,7 @@ _improved version by @stefanocudini_
 $ npm install @stefcud/configyml --save
 ```
 
-THIS IS A FORK OF THE ORIGINAL ABANDONED REPOSITORY
-
-
+THIS IS A FORK OF THE ORIGINAL IS ABANDONED REPOSITORY
 
 
 [![Travis Build](https://travis-ci.org/Nordstrom/config.svg)](https://travis-ci.org/Nordstrom/config) [![Coverage Status](https://coveralls.io/repos/github/Nordstrom/config/badge.svg?branch=master)](https://coveralls.io/github/Nordstrom/config?branch=master) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![config-yml](https://img.shields.io/npm/v/config-yml.svg)](https://www.npmjs.com/package/config-yml)
@@ -51,6 +49,15 @@ console.log(config.app.cache);
 console.log(config.db.location);
 
 ```    
+
+
+### Custom base path
+Set the base path to search config.yml, search to parent folder
+
+```js
+const config = require('config-yml')({basepath: '..'})
+```
+
 
 ## Substitution
 You can substitute variables in the config.yml like this.
@@ -143,13 +150,6 @@ test:
     # ...
 prod:
     # ...
-```
-
-### Custom base path
-Set the base path to search config.yml, search to parent folder
-
-```js
-const config = require('config-yml')({basepath: '..'})
 ```
 
 #### Using a Config folder.

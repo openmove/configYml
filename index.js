@@ -28,8 +28,14 @@ let config
     }
 }*/
 
-function load (env) {
-  config = loadConfig()
+function load (opts) {
+  let env, basepath;
+
+  if (_.isPlainObject(opts)) {
+    ({env, basepath} = opts);
+  }
+
+  config = loadConfig(basepath)
   environments = config.environments || {}
   envId = getEnvId(config, env)
   ENVID = envId ? envId.toUpperCase() : undefined
@@ -50,17 +56,17 @@ function loadConfigFile (file) {
   }
 }
 
-function loadConfig () {
-  if (fs.existsSync('config.yml')) {
-    return loadConfigFile('config.yml')
+function loadConfig (basepath = '.') {
+  if (fs.existsSync(`${basepath}/config.yml`)) {
+    return loadConfigFile(`${basepath}/config.yml`)
   } else {
     let templ = {}
     multiFile = true
-    let files = fs.readdirSync('config')
+    let files = fs.readdirSync(`${basepath}/config.yml`)
     for (let i = 0; i < files.length; i++) {
       if (files[i].endsWith('.yml')) {
         let keyName = files[i].substring(0, files[i].length - '.yml'.length)
-        templ[keyName] = loadConfigFile('config/' + files[i])
+        templ[keyName] = loadConfigFile(`${basepath}/config/` + files[i])
       }
     }
     return templ
@@ -194,7 +200,11 @@ function swapVariables (configFile) {
   file = readAndSwap(enved)
   return file
 }
-module.exports = load()
+module.exports = function(opts) {
+  const c = load(opts);
+  return c;
+};
+//module.exports = load()
 module.exports.load = load
 module.exports.log = log
 module.exports.require = requireSettings

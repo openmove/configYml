@@ -39,7 +39,7 @@ This config can be accessed like this.
 
 ```javascript
 
-const config = require('config-yml');
+const config = require('config-yml')();
 
 console.log(config.app.url);
 console.log(config.app.cache);
@@ -140,6 +140,13 @@ prod:
     # ...
 ```
 
+### Custom base path
+Set the base path to search config.yml, search to parent folder
+
+```js
+const config = require('config-yml')({basepath: '..'})
+```
+
 #### Using a Config folder.
 Your filenames determine the keys, so your directory could be set as follows:
 
@@ -216,7 +223,7 @@ db:
 This will yield the following:
 
 ```javascript
-const config = require('config-yml');
+const config = require('config-yml')();
 
 console.log(config.dns);          // feature-xyz.myapp.com
 console.log(config.app.url);      // http://feature-xyz.myapp.com
@@ -251,7 +258,7 @@ and the following app.js file:
 
 
 ```javascript
-const config = require('config-yml');
+const config = require('config-yml')();
 
 console.log(config.dns);
 console.log(config.app.url);

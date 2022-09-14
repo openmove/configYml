@@ -1,5 +1,7 @@
 # config-yml - Simple Yaml Config for Node.js
 
+_improved version by @stefanocudini_
+
 ```
 $ npm install @stefcud/configyml --save
 ```

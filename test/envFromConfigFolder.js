@@ -21,7 +21,7 @@ describe('Config (from folder)', function () {
         decache('js-yaml')
         decache('yargs')
         delete require.cache[require.resolve('../')]
-        config = require('../')
+        config = require('../')()
       })
 
       it('should house both files', function () {
@@ -45,7 +45,7 @@ describe('Config (from folder)', function () {
         process.argv.push('--env')
         process.argv.push('substitution')
         delete require.cache[require.resolve('../')]
-        config = require('../')
+        config = require('../')()
       })
 
       it('should house both files', function () {
@@ -69,7 +69,7 @@ describe('Config (from folder)', function () {
         decache('yargs')
         process.argv.push('--substitution')
         delete require.cache[require.resolve('../')]
-        config = require('../')
+        config = require('../')()
       })
 
       it('should house both files', function () {

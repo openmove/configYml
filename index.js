@@ -6,9 +6,7 @@ const keys = require('lodash/fp/keys')
 const fs = require('fs')
 const sh = require('shelljs')
 const yaml = require('js-yaml')
-const moment = require('moment')
 const args = require('yargs').argv
-const timestamp = moment().format('YYYYMMDDHHmmss')
 let multiFile = false
 let envId
 let ENVID
@@ -193,8 +191,7 @@ function swapVariables (configFile) {
     file[environmentType] || {},
     {
       envId: envId,
-      ENVID: ENVID,
-      timestamp: timestamp
+      ENVID: ENVID
     })
   const enved = transform(process.env, file).result;
   file = readAndSwap(enved)

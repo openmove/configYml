@@ -19,9 +19,7 @@
     "Configuration",
     "Settings",
     "Parameters",
-    "Node.js",
-    "Stack",
-    "Deploy"
+    "config.yml"
   ],
   "author": "Stefano Cudini stefano.cudini@gmail.com",
   "license": "MIT",
@@ -37,13 +35,6 @@
       "after"
     ]
   },
-  "dependencies": {
-    "js-yaml": "^3.6.1",
-    "lodash": "^4.13.1",
-    "moment": "^2.13.0",
-    "shelljs": "^0.8.4",
-    "yargs": "^4.7.1"
-  },
   "devDependencies": {
     "coveralls": "^3.0.1",
     "decache": "^3.1.0",
@@ -53,5 +44,11 @@
     "sinon": "^1.17.4",
     "snazzy": "^7.0.0",
     "standard": "^11.0.1"
+  },
+  "dependencies": {
+    "js-yaml": "^3.6.1",
+    "lodash": "^4.13.1",
+    "shelljs": "^0.8.4",
+    "yargs": "^4.7.1"
   }
 }

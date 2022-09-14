@@ -1,6 +1,9 @@
 # config-yml - Simple Yaml Config for Node.js
 
 _improved version by @stefanocudini_
+- support basepath to search configs
+- removed moment dependecy
+- pass more options by object
 
 ```
 $ npm install @stefcud/configyml --save

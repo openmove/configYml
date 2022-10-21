@@ -1,8 +1,8 @@
 'use strict'
 
 require('should')
+const _ = require('lodash')
 const sinon = require('sinon')
-const moment = require('moment')
 const _env = require('./_env.js')
 const _load = require('./_load.js')
 
@@ -14,7 +14,7 @@ describe('Config env from branch', function () {
 
   before(function () {
     clock = sinon.useFakeTimers()
-    timestamp = moment().format('YYYYMMDDHHmmss')
+    timestamp = _.now()
     config = _load('env')
     env = _env()
   })

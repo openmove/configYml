@@ -7,6 +7,7 @@ const fs = require('fs')
 const sh = require('shelljs')
 const yaml = require('js-yaml')
 const args = require('yargs').argv
+const timestamp = _.now()
 let multiFile = false
 let envId
 let ENVID
@@ -15,22 +16,11 @@ let environmentTypes
 let environments
 let config
 
-/*function addHttp(url) {
-  //TODO const port ENV.API_PORT
-    if (url.indexOf("http://") == 0 || url.indexOf("https://") == 0) {
-        return url;
-    }
-    else {
-      let prot = 'http'+(port===443?'s':'');
-    return prot+'://' + url;
-    }
-}*/
-
 function load (opts) {
-  let env, basepath;
+  let env, basepath
 
   if (_.isPlainObject(opts)) {
-    ({env, basepath} = opts);
+    ({env, basepath} = opts)
   }
 
   config = loadConfig(basepath)
@@ -45,7 +35,9 @@ function load (opts) {
 
 function loadConfigFile (file) {
   try {
-    return yaml.load(fs.readFileSync(file, 'utf8'))
+    let text = fs.readFileSync(file, 'utf8')
+    let subbed = substitute(process.env, text)
+    return yaml.load(subbed.replace)
   } catch (e) {
     if (!/ENOENT:\s+no such file or directory/.test(e)) {
       console.log('Error Loading ' + file + ':', e)
@@ -112,6 +104,7 @@ function substitute (file, p) {
 
 function transform (file, obj) {
   let changed = false
+
   let resultant = _.mapValues(obj, function (p) {
     if (_.isPlainObject(p)) {
       let transformed = transform(file, p)
@@ -120,6 +113,7 @@ function transform (file, obj) {
       }
       return transformed.result
     }
+
     if (_.isString(p)) {
       let subbed = substitute(file, p)
       if (!changed && subbed.success) {
@@ -127,6 +121,7 @@ function transform (file, obj) {
       }
       return subbed.replace
     }
+
     if (_.isArray(p)) {
       for (let i = 0; i < p.length; i++) {
         if (_.isString(p[i])) {
@@ -134,6 +129,7 @@ function transform (file, obj) {
         }
       }
     }
+
     return p
   })
   return {changed: changed, result: resultant}
@@ -161,18 +157,6 @@ function requireSettings (settings) {
   }
 }
 
-function stripComments(ymltext) {
-
-	const lines = ymltext.split(/\r?\n/).map(line => {
-		const trim = line.trim();
-		return trim[0]!=='#' ? line : '';
-	}).filter(line => {
-		return line;
-	});
-
-	return lines.join('\n')+'\n';
-}
-
 function swapVariables (configFile) {
   function readAndSwap (obj) {
     let altered = false
@@ -190,18 +174,20 @@ function swapVariables (configFile) {
     file || {},
     file[environmentType] || {},
     {
-      envId: envId,
-      ENVID: ENVID
+      envId,
+      ENVID,
+      timestamp
     })
-  const enved = transform(process.env, file).result;
+
+  /* unuseful replaced in loadConfigFile  const enved = transform(process.env, file).result;
   file = readAndSwap(enved)
-  return file
+  return file */
+  return readAndSwap(file)
 }
-module.exports = function(opts) {
-  const c = load(opts);
-  return c;
-};
-//module.exports = load()
+module.exports = function (opts) {
+  return load(opts)
+}
+// module.exports = load()
 module.exports.load = load
 module.exports.log = log
 module.exports.require = requireSettings

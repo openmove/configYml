@@ -43,12 +43,12 @@
     "should": "^9.0.2",
     "sinon": "^1.17.4",
     "snazzy": "^7.0.0",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "shelljs": "^0.8.4"
   },
   "dependencies": {
     "js-yaml": "^3.6.1",
     "lodash": "^4.13.1",
-    "shelljs": "^0.8.4",
     "yargs": "^4.7.1"
   }
 }

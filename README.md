@@ -16,11 +16,7 @@ THIS IS A FORK OF THE ORIGINAL IS ABANDONED REPOSITORY
 
 ## Install
 ```
-$ yarn add config-yml
-```
-or
-```
-$ npm install config-yml --save
+$ npm install @stefcud/configyml --save
 ```
 
 ## Usage

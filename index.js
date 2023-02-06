@@ -14,12 +14,13 @@ let environmentType
 let environmentTypes
 let environments
 let config
+let defaultsEnv = {}
 
 function load (opts) {
   let env, basepath
 
   if (_.isPlainObject(opts)) {
-    ({env, basepath} = opts)
+    ({env, basepath, defaultsEnv} = opts)
   }
 
   config = loadConfig(basepath)
@@ -35,7 +36,8 @@ function load (opts) {
 function loadConfigFile (file) {
   try {
     let text = fs.readFileSync(file, 'utf8')
-    let subbed = substitute(process.env, text)
+    let processEnv = Object.assign({}, defaultsEnv, process.env)
+    let subbed = substitute(processEnv, text)
     return yaml.load(subbed.replace)
   } catch (e) {
     if (!/ENOENT:\s+no such file or directory/.test(e)) {

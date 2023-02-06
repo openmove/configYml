@@ -4,6 +4,7 @@ _improved version by @stefanocudini_
 - support basepath to search configs
 - removed moment dependecy
 - pass more options by object
+- defaultsEnv object to set defaults value for undefined process.env variables
 
 ```
 $ npm install @stefcud/configyml --save
@@ -51,7 +52,7 @@ console.log(config.db.location);
 Set the base path to search config.yml, search to parent folder
 
 ```js
-const config = require('config-yml')({basepath: '..'})
+const config = require('config-yml')({basepath: '..', defaultsEnv: {DBUSER: 'guest'}})
 ```
 
 
@@ -68,8 +69,11 @@ app:
 
 db:
     location: mysql-db-prod
+    user: ${DBUSER}
 
 ```
+
+if $DBUSER env var is undefined use default value inside _defaultsEnv_
 
 This config would yield the following.
 

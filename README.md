@@ -1,4 +1,6 @@
-# config-yml - Simple Yaml Config for Node.js
+# ConfigYml
+
+simple and smart Yaml configurator for NodeJs applications
 
 _improved version by @stefanocudini_
 - support basepath to search configs

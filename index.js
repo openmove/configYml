@@ -15,6 +15,9 @@ let environmentTypes
 let environments
 let config
 let defaultsEnvVars = {}
+let processEnv = {
+  NODE_ENV: 'prod'
+}
 
 function load (opts) {
   let env, basepath
@@ -23,8 +26,10 @@ function load (opts) {
     ({env, basepath, defaultsEnvVars} = opts)
   }
 
+  Object.assign(processEnv, defaultsEnvVars, process.env)
+
   config = loadConfig(basepath)
-  environments = config.environments || {}
+  environments = config.environments || {default: 'prod'}
   envId = getEnvId(config, env)
   ENVID = envId ? envId.toUpperCase() : undefined
   environmentTypes = environments.static || keys(config)
@@ -36,7 +41,6 @@ function load (opts) {
 function loadConfigFile (file) {
   try {
     let text = fs.readFileSync(file, 'utf8')
-    let processEnv = Object.assign({}, defaultsEnvVars, process.env)
     let subbed = substitute(processEnv, text)
     return yaml.load(subbed.replace)
   } catch (e) {
@@ -72,7 +76,7 @@ function getEnvId (obj, env) {
           keys,
           head
         )(args) ||
-        process.env.NODE_ENV
+        processEnv.NODE_ENV
 }
 
 function substitute (file, p) {

@@ -52,14 +52,17 @@ console.log(config.db.location);
 Set the base path to search config.yml, search to parent folder
 
 ```js
-const config = require('config-yml')({basepath: '..', defaultsEnv: {DBUSER: 'guest'}})
+const config = require('config-yml')({basepath: '..', defaultsEnvVars: {DBUSER: 'guest'}})
 ```
 
 
 ## Substitution
-You can substitute variables in the config.yml like this.
+You can substitute variables in the `config.yml` like this.
 
 ```yaml
+
+defaultsEnvVars:
+  DBNAME: 'mydb'
 
 dns: myapp.com
 
@@ -70,10 +73,12 @@ app:
 db:
     location: mysql-db-prod
     user: ${DBUSER}
+    dbname: ${DBNAME}
 
 ```
 
-if $DBUSER env var is undefined use default value inside _defaultsEnv_
+if $DBUSER environment var is not defined use default value inside _defaultsEnvVars_ on instance options
+if $DBNAME environment var is not defined use default value inside _defaultsEnvVars_ on config.yml option
 
 This config would yield the following.
 

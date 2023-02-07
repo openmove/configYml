@@ -1,6 +1,6 @@
 {
   "name": "@stefcud/configyml",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "simple and smart Yaml configurator for NodeJs applications",
   "main": "index.js",
   "scripts": {
@@ -47,8 +47,8 @@
     "shelljs": "^0.8.4"
   },
   "dependencies": {
-    "js-yaml": "^3.6.1",
-    "lodash": "^4.13.1",
+    "js-yaml": "^3.14.0",
+    "lodash": "^4.17.20",
     "yargs": "^4.7.1"
   }
 }

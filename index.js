@@ -14,13 +14,13 @@ let environmentType
 let environmentTypes
 let environments
 let config
-let defaultsEnv = {}
+let defaultsEnvVars = {}
 
 function load (opts) {
   let env, basepath
 
   if (_.isPlainObject(opts)) {
-    ({env, basepath, defaultsEnv} = opts)
+    ({env, basepath, defaultsEnvVars} = opts)
   }
 
   config = loadConfig(basepath)
@@ -36,7 +36,7 @@ function load (opts) {
 function loadConfigFile (file) {
   try {
     let text = fs.readFileSync(file, 'utf8')
-    let processEnv = Object.assign({}, defaultsEnv, process.env)
+    let processEnv = Object.assign({}, defaultsEnvVars, process.env)
     let subbed = substitute(processEnv, text)
     return yaml.load(subbed.replace)
   } catch (e) {
@@ -51,16 +51,16 @@ function loadConfig (basepath = '.') {
   if (fs.existsSync(`${basepath}/config.yml`)) {
     return loadConfigFile(`${basepath}/config.yml`)
   } else {
-    let templ = {}
+    let tmpl = {}
     multiFile = true
     let files = fs.readdirSync(`${basepath}/config.yml`)
     for (let i = 0; i < files.length; i++) {
       if (files[i].endsWith('.yml')) {
         let keyName = files[i].substring(0, files[i].length - '.yml'.length)
-        templ[keyName] = loadConfigFile(`${basepath}/config/` + files[i])
+        tmpl[keyName] = loadConfigFile(`${basepath}/config/` + files[i])
       }
     }
-    return templ
+    return tmpl
   }
 }
 
@@ -81,7 +81,7 @@ function substitute (file, p) {
     if (!success) {
       success = _.has(file, term)
     }
-    return _.get(file, term) || match
+    return _.get(file, term) || _.get(file.defaultsEnvVars, term) || match
   })
   return {success: success, replace: replaced}
 }
@@ -145,9 +145,9 @@ function swapVariables (configFile) {
   function readAndSwap (obj) {
     let altered = false
     do {
-      let temp = transform(obj, obj)
-      obj = temp.result
-      altered = temp.changed
+      let tmp = transform(obj, obj)
+      obj = tmp.result
+      altered = tmp.changed
     } while (altered)
     return obj
   }
@@ -171,7 +171,6 @@ function swapVariables (configFile) {
 module.exports = function (opts) {
   return load(opts)
 }
-// module.exports = load()
 module.exports.load = load
 module.exports.log = log
 module.exports.require = requireSettings

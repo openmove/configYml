@@ -1,6 +1,8 @@
 # ConfigYml
 
-simple and smart Yaml configurator for NodeJs applications
+[![configYml](https://img.shields.io/npm/v/@stefcud/configyml.svg)](https://www.npmjs.com/package/@stefcud/configyml)
+
+Simple and smart Yaml configurator for NodeJs applications
 
 THIS IS A FORK OF THE ORIGINAL IS ABANDONED REPOSITORY
 
@@ -13,8 +15,6 @@ _improved version by @stefanocudini_
 ```
 $ npm install @stefcud/configyml --save
 ```
-
-[![configYml](https://img.shields.io/npm/v/@stefcud/configyml.svg)](https://www.npmjs.com/package/@stefcud/configyml)
 
 ## Install
 ```

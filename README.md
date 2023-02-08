@@ -14,7 +14,7 @@ _improved version by @stefanocudini_
 $ npm install @stefcud/configyml --save
 ```
 
-[![configYml](https://img.shields.io/npm/v/config-yml.svg)](https://www.npmjs.com/package/@stefcud/configyml)
+[![configYml](https://img.shields.io/npm/v/@stefcud/configyml.svg)](https://www.npmjs.com/package/@stefcud/configyml)
 
 ## Install
 ```

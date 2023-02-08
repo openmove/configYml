@@ -2,6 +2,8 @@
 
 simple and smart Yaml configurator for NodeJs applications
 
+THIS IS A FORK OF THE ORIGINAL IS ABANDONED REPOSITORY
+
 _improved version by @stefanocudini_
 - support basepath to search configs
 - removed moment dependecy
@@ -12,10 +14,7 @@ _improved version by @stefanocudini_
 $ npm install @stefcud/configyml --save
 ```
 
-THIS IS A FORK OF THE ORIGINAL IS ABANDONED REPOSITORY
-
-
-[![Travis Build](https://travis-ci.org/Nordstrom/config.svg)](https://travis-ci.org/Nordstrom/config) [![Coverage Status](https://coveralls.io/repos/github/Nordstrom/config/badge.svg?branch=master)](https://coveralls.io/github/Nordstrom/config?branch=master) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![config-yml](https://img.shields.io/npm/v/config-yml.svg)](https://www.npmjs.com/package/config-yml)
+[![configYml](https://img.shields.io/npm/v/config-yml.svg)](https://www.npmjs.com/package/@stefcud/configyml)
 
 ## Install
 ```

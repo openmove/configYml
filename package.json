@@ -49,6 +49,9 @@
   "dependencies": {
     "js-yaml": "^3.14.0",
     "lodash": "^4.17.20",
-    "yargs": "^4.7.1"
+    "yargs": "^17.7.1"
+  },
+  "overrides": {
+    "yargs-parser": "^21.1.1"
   }
 }

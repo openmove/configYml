@@ -40,7 +40,7 @@ This config can be accessed like this.
 
 ```javascript
 
-const config = require('config-yml')();
+const config = require('@stefcud/configyml')();
 
 console.log(config.app.url);
 console.log(config.app.cache);
@@ -53,7 +53,7 @@ console.log(config.db.location);
 Set the base path to search config.yml, search to parent folder
 
 ```js
-const config = require('config-yml')({basepath: '..', defaultsEnvVars: {DBUSER: 'guest'}})
+const config = require('@stefcud/configyml')({basepath: '..', defaultsEnvVars: {DBUSER: 'guest'}})
 ```
 
 
@@ -171,7 +171,7 @@ config/prod.yml
 Set the Environment ID using the load function.
 
 ```js
-const config = require('config-yml').load('myenvironment')
+const config = require('@stefcud/configyml').load('myenvironment')
 ```
 
 
@@ -234,7 +234,7 @@ db:
 This will yield the following:
 
 ```javascript
-const config = require('config-yml')();
+const config = require('@stefcud/configyml')();
 
 console.log(config.dns);          // feature-xyz.myapp.com
 console.log(config.app.url);      // http://feature-xyz.myapp.com
@@ -269,7 +269,7 @@ and the following app.js file:
 
 
 ```javascript
-const config = require('config-yml')();
+const config = require('@stefcud/configyml')();
 
 console.log(config.dns);
 console.log(config.app.url);

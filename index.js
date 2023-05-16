@@ -20,15 +20,15 @@ let processEnv = {
 }
 
 function load (opts) {
-  let env, basepath
+  let env, basepath, configfile;
 
   if (_.isPlainObject(opts)) {
-    ({env, basepath, defaultsEnvVars} = opts)
+    ({env, basepath, configfile, defaultsEnvVars} = opts)
   }
 
   Object.assign(processEnv, defaultsEnvVars, process.env)
 
-  config = loadConfig(basepath)
+  config = loadConfig(basepath, configfile)
   environments = config.environments || {default: 'prod'}
   envId = getEnvId(config, env)
   ENVID = envId ? envId.toUpperCase() : undefined
@@ -51,13 +51,14 @@ function loadConfigFile (file) {
   }
 }
 
-function loadConfig (basepath = '.') {
-  if (fs.existsSync(`${basepath}/config.yml`)) {
-    return loadConfigFile(`${basepath}/config.yml`)
-  } else {
+function loadConfig (basepath = '.', configfile = 'config.yml') {
+  if (fs.existsSync(`${basepath}/${configfile}`)) {
+    return loadConfigFile(`${basepath}/${configfile}`)
+  }
+  else if(fs.existsSync(`${basepath}/config`)) {
     let tmpl = {}
     multiFile = true
-    let files = fs.readdirSync(`${basepath}/config.yml`)
+    let files = fs.readdirSync(`${basepath}/config`)
     for (let i = 0; i < files.length; i++) {
       if (files[i].endsWith('.yml')) {
         let keyName = files[i].substring(0, files[i].length - '.yml'.length)
@@ -65,6 +66,10 @@ function loadConfig (basepath = '.') {
       }
     }
     return tmpl
+  }
+  else {
+    console.log(`Not found config in path: ${basepath}`);
+    throw new Error(`Not found config in path: ${basepath}`);
   }
 }
 
@@ -137,11 +142,11 @@ function requireSettings (settings) {
   })
 
   if (erredSettings.length > 1) {
-    throw new Error('The following settings are required in config.yml: ' + erredSettings.join('; '))
+    throw new Error('The following settings are required in config yml file: ' + erredSettings.join('; '))
   }
 
   if (erredSettings.length === 1) {
-    throw new Error(erredSettings[0] + ' is required in config.yml')
+    throw new Error(erredSettings[0] + ' is required in config yml file')
   }
 }
 

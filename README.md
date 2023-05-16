@@ -50,10 +50,20 @@ console.log(config.db.location);
 
 
 ### Custom base path
+
 Set the base path to search config.yml, search to parent folder
 
 ```js
 const config = require('@stefcud/configyml')({basepath: '..', defaultsEnvVars: {DBUSER: 'guest'}})
+```
+
+### Custom filename
+
+load specific config file for any project
+
+```js
+const namespace = 'projectname';
+const config = require('@stefcud/configyml')({configfile: `config.${namespace}.yml`})
 ```
 
 

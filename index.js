@@ -9,6 +9,7 @@ const args = require('yargs').argv
 const timestamp = _.now()
 let multiFile = false
 let envId
+let ENVID
 let isDev
 let environmentType
 let environmentTypes
@@ -31,7 +32,8 @@ function load (opts) {
   config = loadConfig(basepath, configfile)
   environments = config.environments || {default: 'prod'}
   envId = getEnvId(config, env)
-  isDev = ['DEV','DEVELOP','DEVELOPMENT'].includes(envId.toUpperCase());
+  ENVID = envId.toUpperCase()
+  isDev = ['DEV','DEVELOP','DEVELOPMENT'].includes(ENVID);
   environmentTypes = environments.static || keys(config)
   environmentType = _.includes(environmentTypes, envId) ? envId : environments.default
   config = swapVariables(config)
@@ -168,6 +170,7 @@ function swapVariables (configFile) {
     file[environmentType] || {},
     {
       envId,
+      ENVID,
       isDev,
       timestamp
     })

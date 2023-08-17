@@ -1,6 +1,6 @@
 {
   "name": "@stefcud/configyml",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "simple and smart Yaml configurator for NodeJs applications",
   "main": "index.js",
   "scripts": {

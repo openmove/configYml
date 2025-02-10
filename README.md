@@ -13,12 +13,12 @@ _improved version by @stefanocudini_
 - defaultsEnv object to set defaults value for undefined process.env variables
 
 ```
-$ npm install @stefcud/configyml --save
+$ npm install @openmove/configyml --save
 ```
 
 ## Install
 ```
-$ npm install @stefcud/configyml --save
+$ npm install @openmove/configyml --save
 ```
 
 ## Usage
@@ -54,7 +54,7 @@ console.log(config.db.location);
 Set the base path to search config.yml, search to parent folder
 
 ```js
-const config = require('@stefcud/configyml')({basepath: '..', defaultsEnvVars: {DBUSER: 'guest'}})
+const config = require('@openmove/configyml')({basepath: '..', defaultsEnvVars: {DBUSER: 'guest'}})
 ```
 
 ### Custom filename
@@ -63,7 +63,7 @@ load specific config file for any project
 
 ```js
 const namespace = 'projectname';
-const config = require('@stefcud/configyml')({configfile: `config.${namespace}.yml`})
+const config = require('@openmove/configyml')({configfile: `config.${namespace}.yml`})
 ```
 
 

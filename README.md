@@ -1,6 +1,6 @@
 # ConfigYml
 
-[![configYml](https://img.shields.io/npm/v/@stefcud/configyml.svg)](https://www.npmjs.com/package/@stefcud/configyml)
+[![configYml](https://img.shields.io/npm/v/@stefcud/configyml.svg)](https://www.npmjs.com/package/@openmove/configyml)
 
 Simple and smart Yaml configurator for NodeJs applications
 
@@ -279,7 +279,7 @@ and the following app.js file:
 
 
 ```javascript
-const config = require('@stefcud/configyml')();
+const config = require('@openmove/configyml')();
 
 console.log(config.dns);
 console.log(config.app.url);

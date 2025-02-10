@@ -181,7 +181,7 @@ config/prod.yml
 Set the Environment ID using the load function.
 
 ```js
-const config = require('@stefcud/configyml').load('myenvironment')
+const config = require('@openmove/configyml').load('myenvironment')
 ```
 
 

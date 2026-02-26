@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/openmove/configYml.git"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "keywords": [
     "Config",
     "Yaml",
@@ -36,15 +39,14 @@
     ]
   },
   "devDependencies": {
-    "coveralls": "^3.0.1",
     "decache": "^3.1.0",
-    "mocha": "^11.7.5",
+    "mocha": "^10.8.2",
     "nyc": "^18.0.0",
+    "shelljs": "^0.8.4",
     "should": "^9.0.2",
     "sinon": "^1.17.4",
     "snazzy": "^7.0.0",
-    "standard": "^11.0.1",
-    "shelljs": "^0.8.4"
+    "standard": "^17.1.2"
   },
   "dependencies": {
     "js-yaml": "^3.14.0",
